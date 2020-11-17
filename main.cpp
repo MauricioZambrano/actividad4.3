@@ -11,8 +11,28 @@
 
 using namespace std;
 
-int main(){
+int bootMasterOutDegree(vector<int> &Outdegrees, int n){
 
+    int bootMasterOutDegree = 0;
+    for(int i = 0; i < n; i++){
+        bootMasterOutDegree = max(bootMasterOutDegree, Outdegrees[i]); 
+    }
+    
+    //Imprimir el nodo con el mayor outdegree 
+    cout << "Nodo con el mayor outdegree : "; 
+    for (int i = 0; i < n; i++) { 
+        if (Outdegrees[i] == bootMasterOutDegree) 
+            return i; 
+    } 
+    cout << endl; 
+}
+
+int main(){
+    int n, m;
+    string bootMaster;
+    vector<vector <int> > listAdj(n);
+    vector<int> Outdegrees(listAdj.size());
+    
 
     return 0;
 }
