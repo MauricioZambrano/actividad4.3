@@ -48,6 +48,17 @@ void leeArchivo(vector< vector<int> > &listaAdj, unordered_map< string, pair<int
     archivo.close();
 }
 
+void determinaFanOut(unordered_map<string, pair<int, int>> mapaIP){
+    string userIp;
+    
+    cout << "Ingrese el IP que gustaría consultar su fan out: " << endl;
+
+    cin >> userIp;
+
+    cout << "El ip " << userIp << " tiene un fan out de " << mapaIP[userIp] << "." << endl;
+
+}
+
 /*
     void maxFanOut(vector< vector<int> > listaAdj, unordered_map< string, pair<int, int> > mapaIP){
         int maxFanOut = 0;
