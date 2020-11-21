@@ -49,7 +49,7 @@ void leeArchivo(vector< vector<int> > &listaAdj, unordered_map< string, pair<int
         ipIn = ipIn.substr(0, ipIn.length()-5);
 
         mapaIP[ipOut].second++;
-        listaAdj[mapaIP[ipOut].first].push_back(mapaIP[ipIn].first); // Segmentation fault
+        listaAdj[mapaIP[ipOut].first].push_back(mapaIP[ipIn].first);
         
         if(mapaIP[ipOut].second > maxFanOut)
             maxFanOut = mapaIP[ipOut].second;
@@ -64,13 +64,14 @@ void determinaFanOut(unordered_map< string, pair<int,int> > mapaIP){
     string userIP = "*";
     
     while(userIP != "0"){
-        cout << endl << "(Teclee 0 cuando desee salir de la función).\nIngrese la dirección IP cuya fan-out desea consultar: ";
+        cout << "\n(Teclee 0 cuando desee salir de la función).\nIngrese la dirección IP cuya fan-out desea consultar: ";
         cin >> userIP;
         
         if(userIP != "0")
-            cout << "La dirección " << userIP<< " tiene un fan-out de " << mapaIP[userIP].second << "." << endl;
+            cout << "\nLa dirección " << userIP<< " tiene un fan-out de " << mapaIP[userIP].second << "." << endl;
     }
-
+    
+    cout << endl;
 }
 
 // Determina y despliega la dirección ip de el/los bootmaster(s) del archivo
@@ -86,8 +87,6 @@ void bootMaster(vector< vector<int> > listaAdj, unordered_map< string, pair<int,
                 cout << "IP " << it->first << endl;
             }
         }
-
-        cout << endl;
     }
 
 // Función principal encargada de leer el archivo de entrada
@@ -98,8 +97,8 @@ int main(){
     int maxFanOut;
 
     leeArchivo(listaAdj, mapaIP, maxFanOut);
-    determinaFanOut(mapaIP);
     bootMaster(listaAdj, mapaIP, maxFanOut);
+    determinaFanOut(mapaIP);
 
     return 0;
 }
